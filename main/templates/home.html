@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+
+	<html lang="en">
+	<head>
+		<link rel='stylesheet' type='text/css' href={% static 'css/foundation.css' %}>
+		<title>URL Shortener</title>
+	</head>
+	<body>
+		<div class="top-bar">
+			<section class='top-bar-section'>
+				<ul class="title-area">
+					<li class="name">
+						<h1><a href='/'>URL Shortener</a></h1>
+					</li>
+				</ul>
+            </section>
+        </div>
+  <div class="row">
+<form method="post"> {% csrf_token %}
+    {{ form.as_table }}
+    <button type="submit" name="button">Shorten!</button>
+</form>
+      {% if a %}
+<a href="{{ a }}" target="_blank"><h3>{{ whole_short }}/{{ a }}</h3></a>
+      {% endif %}
+  </div>
+    </body>
+</html>
